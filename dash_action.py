@@ -17,7 +17,27 @@ from scipy.optimize import minimize
 ### header one (title) ###
 
 st.set_page_config(page_title="Dashboard StockPrice")
-st.header("Portfolio on the best CAC40 stocks for 2022")
+st.header("Portfolio on the best CAC40 stocks")
+
+### DarkMode & Style ###
+
+darkmode = """
+<style>
+body {
+  background-color: black;
+  color: white;
+}
+</style>
+"""
+
+style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            header {visibility: hidden;}
+            </style>
+            """
+st.markdown(style, unsafe_allow_html=True)
 
 ### dropdown ###
 
@@ -40,9 +60,9 @@ dropdown = st.multiselect(
     
 'Chosen the different tickers (please select the five tickers from the drop-down list to see the investment gains for this portfolio)',
 
- tickers,default=['OR.PA'])
+ tickers,default=['CAP.PA', 'OR.PA', 'AIR.PA', 'SAN.PA', 'SU.PA'])
 
-start= st.date_input('Start Date (you can choose a start date, please click on the drop-down list)',value=pd.to_datetime('2015-01-02'))
+start= st.date_input('Start Date (you can choose a start date, please click on the drop-down list)',value=pd.to_datetime('2023-01-02'))
 end = st.date_input('End Date (you can choose an end date, please click on the drop-down list)',value=pd.to_datetime('today'))
 
 ### first condition ###
@@ -89,7 +109,7 @@ if len(dropdown)>0:
 
         np.random.seed(101)
     
-        num_ports = 5000
+        num_ports = 500
         all_weights = np.zeros((num_ports,len(data.columns)))
         ret_arr = np.zeros(num_ports) 
         vol_arr = np.zeros(num_ports)
@@ -208,7 +228,6 @@ if len(dropdown)>0:
          
 
         def check_sum(weights):      
-            # retourne 0 si la somme de poids = 1
             return np.sum(weights)-1
 
 
