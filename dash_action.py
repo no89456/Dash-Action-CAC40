@@ -21,18 +21,9 @@ st.header("Portfolio on the best CAC40 stocks")
 
 ### DarkMode & Style ###
 
-darkmode = """
-<style>
-body {
-  background-color: black;
-  color: white;
-}
-</style>
-"""
-
 style = """
             <style>
-            #MainMenu {visibility: hidden;}
+            MainMenu {visibility: hidden;}
             footer {visibility: hidden;}
             header {visibility: hidden;}
             </style>
@@ -102,6 +93,8 @@ if len(dropdown)>0:
     st.plotly_chart(graph_two)
     
     ### Simulation Monte-Carlo (portfolio optimisation) ###
+
+    st.caption(":warning: If you don't see the Monte-Carlo simulation, please wait :sunglasses:")
     
     ### second condition ###
     
@@ -109,7 +102,7 @@ if len(dropdown)>0:
 
         np.random.seed(101)
     
-        num_ports = 500
+        num_ports = (500)
         all_weights = np.zeros((num_ports,len(data.columns)))
         ret_arr = np.zeros(num_ports) 
         vol_arr = np.zeros(num_ports)
