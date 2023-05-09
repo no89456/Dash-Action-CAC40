@@ -63,6 +63,7 @@ if len(dropdown)>0:
     ### Connexion (yahoo finance) ###
     
     data = yf.download(dropdown,start,end)['Adj Close']
+    data = data.dropna(axis=0)
     
     ## graph 1 (Evolution of Prices) ##
     
