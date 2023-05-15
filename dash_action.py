@@ -19,6 +19,10 @@ from scipy.optimize import minimize
 st.set_page_config(page_title="Dashboard StockPrice")
 st.header("Portfolio on the best CAC40 stocks")
 
+### Author ###
+
+st.caption("Author : Arnaud Drouet")
+
 ### DarkMode & Style ###
 
 style = """
